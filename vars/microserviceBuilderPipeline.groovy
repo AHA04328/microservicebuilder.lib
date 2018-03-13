@@ -248,7 +248,7 @@ def deployProject (String chartFolder, String registry, String image, String ima
       }
       if (namespace) deployCommand += " --namespace ${namespace}"
       //iijima update
-      def releaseName = (env.BRANCH_NAME == "master") ? "${image}${version}" : "${image}-${env.BRANCH_NAME}"
+      def releaseName = (env.BRANCH_NAME == "master") ? "${image}-${version}" : "${image}-${env.BRANCH_NAME}"
       //def releaseName = (env.BRANCH_NAME == "master") ? "${image}" : "${image}-${env.BRANCH_NAME}"
       deployCommand += " ${releaseName} ${chartFolder}"
       sh deployCommand
