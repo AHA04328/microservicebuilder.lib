@@ -233,14 +233,15 @@ def call(body) {
 
       if (deploy && env.BRANCH_NAME == deployBranch) {
         stage ('Deploy') {
-          deployProject (realChartFolder, registry, image, imageTag, namespace, manifestFolder)
+          //iijima add version
+          deployProject (realChartFolder, registry, image, imageTag, namespace, manifestFolder,version)
         }
       }
     }
   }
 }
-
-def deployProject (String chartFolder, String registry, String image, String imageTag, String namespace, String manifestFolder) {
+          //iijima add version
+def deployProject (String chartFolder, String registry, String image, String imageTag, String namespace, String manifestFolder, String version) {
   if (chartFolder != null && fileExists(chartFolder)) {
     container ('helm') {
       sh "/helm init --client-only --skip-refresh"
