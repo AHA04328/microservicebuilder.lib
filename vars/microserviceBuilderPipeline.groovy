@@ -48,6 +48,8 @@ def call(body) {
 
   print "microserviceBuilderPipeline : config = ${config}"
 
+  //iijima add
+  def version = config.version
   def image = config.image
   def maven = (config.mavenImage == null) ? 'maven:3.5.2-jdk-8' : config.mavenImage
   def docker = (config.dockerImage == null) ? 'ibmcom/docker:17.10' : config.dockerImage
